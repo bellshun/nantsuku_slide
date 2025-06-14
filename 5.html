@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangChain.jsの説明</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4ecff 100%);
+            overflow: hidden;
+        }
+        .title {
+            font-weight: 700;
+            color: #1a365d;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .circle-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(49, 130, 206, 0.1);
+            top: -100px;
+            right: -50px;
+        }
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(56, 178, 172, 0.1);
+            bottom: -50px;
+            left: 100px;
+        }
+        .feature-box {
+            background-color: rgba(49, 130, 206, 0.1);
+            border-left: 4px solid #3182ce;
+            padding: 12px 20px;
+            margin: 8px 0;
+        }
+        .diagram-box {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .diagram-item {
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .arrow {
+            margin: 0 8px;
+            font-size: 1.5rem;
+            color: #3182ce;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container p-12">
+        <div class="circle-decoration circle-1"></div>
+        <div class="circle-decoration circle-2"></div>
+        
+        <div class="w-full">
+            <h1 class="title text-4xl mb-8">LangChain.jsとは？</h1>
+            
+            <div class="text-2xl mb-8 text-gray-700">
+                <p>「JavaScriptでAIアプリを簡単に開発するためのフレームワーク」</p>
+            </div>
+            
+            <div class="diagram-box mb-10">
+                <div class="flex items-center justify-center">
+                    <div class="diagram-item bg-blue-100 w-1/4">
+                        <i class="fab fa-js text-4xl text-yellow-500 mb-2"></i>
+                        <div class="text-lg font-bold">JavaScript/TypeScript</div>
+                    </div>
+                    
+                    <div class="arrow">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    
+                    <div class="diagram-item bg-purple-100 w-1/4">
+                        <i class="fas fa-brain text-4xl text-purple-600 mb-2"></i>
+                        <div class="text-lg font-bold">LLM<br>(大規模言語モデル)</div>
+                    </div>
+                    
+                    <div class="arrow">
+                        <i class="fas fa-equals"></i>
+                    </div>
+                    
+                    <div class="diagram-item bg-green-100 w-1/4">
+                        <i class="fas fa-cogs text-4xl text-green-600 mb-2"></i>
+                        <div class="text-lg font-bold">LangChain.js</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <div class="feature-box rounded-md text-xl">
+                    <i class="fas fa-check-circle text-blue-600 mr-2"></i> API設計がシンプルで初心者でも扱いやすい
+                </div>
+                <div class="feature-box rounded-md text-xl">
+                    <i class="fas fa-check-circle text-blue-600 mr-2"></i> 複数のLLM（ChatGPT、Claude等）と連携可能
+                </div>
+                <div class="feature-box rounded-md text-xl">
+                    <i class="fas fa-check-circle text-blue-600 mr-2"></i> 外部データとの連携やメモリ管理が簡単
+                </div>
+                <div class="feature-box rounded-md text-xl">
+                    <i class="fas fa-check-circle text-blue-600 mr-2"></i> MCPサーバーとの連携も容易に実装可能
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!-- Compare this snippet from 3.html: -->

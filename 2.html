@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0A2463 0%, #3E92CC 100%);
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        .profile-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px 50px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            width: 70%;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .icon-wrapper {
+            width: 40px;
+            text-align: center;
+            margin-right: 24px;
+        }
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background-color: #FF9F1C;
+            margin: 15px auto 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="text-center mb-6">
+            <h1 class="text-5xl font-bold text-white tracking-wide">自己紹介</h1>
+            <div class="title-line"></div>
+        </div>
+        
+        <div class="profile-card">
+            <div class="info-row">
+                <div class="icon-wrapper">
+                    <i class="fas fa-user text-2xl text-yellow-300"></i>
+                </div>
+                <div>
+                    <div class="text-lg font-medium text-gray-300">氏名</div>
+                    <div class="text-2xl">鈴木駿斗</div>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="icon-wrapper">
+                    <i class="fas fa-building text-2xl text-blue-300"></i>
+                </div>
+                <div>
+                    <div class="text-lg font-medium text-gray-300">所属</div>
+                    <div class="text-2xl">元々はもの革にいました。今はex SCSK</div>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="icon-wrapper">
+                    <i class="fas fa-brain text-2xl text-green-300"></i>
+                </div>
+                <div>
+                    <div class="text-lg font-medium text-gray-300">専門</div>
+                    <div class="text-2xl">システム開発 (AI系は今月から)</div>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="icon-wrapper">
+                    <i class="fas fa-history text-2xl text-purple-300"></i>
+                </div>
+                <div>
+                    <div class="text-lg font-medium text-gray-300">経歴</div>
+                    <div class="text-2xl">2020年新卒入社。2022年頃になんつく参加。その後退職し幽霊になる。約3年ぶりの参加</div>
+                </div>
+            </div>
+            
+            <div class="info-row mb-0">
+                <div class="icon-wrapper">
+                    <i class="fas fa-heart text-2xl text-red-300"></i>
+                </div>
+                <div>
+                    <div class="text-lg font-medium text-gray-300">趣味</div>
+                    <div class="text-2xl">料理、野球観戦(巨人)</div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</body>
+</html>

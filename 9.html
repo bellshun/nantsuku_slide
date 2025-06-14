@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA1：表中のデータを聞いてみる</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0A2463 0%, #247BA0 100%);
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+        }
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background-color: #FF9F1C;
+            margin: 15px 0 20px;
+        }
+        .query-section {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #FF9F1C;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .image-display {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .result-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .result-icon {
+            width: 24px;
+            text-align: center;
+            margin-right: 16px;
+            color: #64E9EE;
+        }
+        .conclusion {
+            border-left: 4px solid #64E9EE;
+            padding: 15px;
+            background-color: rgba(100, 233, 238, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h1 class="text-4xl font-bold tracking-wide mb-2">QA1：表中のデータを聞いてみる</h1>
+        <div class="title-line"></div>
+        
+        <div class="content-section">
+            <h2 class="text-xl font-semibold mb-3"><i class="fas fa-search text-yellow-400 mr-2"></i>クエリ</h2>
+            <div class="query-section">
+                <p class="text-lg">"表に記載された外食産業の2024年の売上前年比はどうなっていますか？"</p>
+            </div>
+        </div>
+        
+        <div class="result-grid">
+            <div class="content-section">
+                <h2 class="text-xl font-semibold mb-3"><i class="fas fa-list text-blue-400 mr-2"></i>検索結果</h2>
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">page2 <span class="text-sm text-gray-300">スコア: 0.82</span></div>
+                        <div class="text-sm text-gray-300">外食産業市場動向調査報告書</div>
+                    </div>
+                </div>
+                
+                <div class="result-item bg-blue-900 bg-opacity-30">
+                    <div class="result-icon text-yellow-300"><i class="fas fa-file-pdf"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">page5 <span class="text-sm text-yellow-200">スコア: 0.89 (最適)</span></div>
+                        <div class="text-sm text-gray-300">表：外食産業月別売上高前年比</div>
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">page1 <span class="text-sm text-gray-300">スコア: 0.74</span></div>
+                        <div class="text-sm text-gray-300">外食産業調査概要</div>
+                    </div>
+                </div>
+                
+                <div class="conclusion mt-4">
+                    <p class="font-medium"><i class="fas fa-check-circle text-green-400 mr-2"></i>結論</p>
+                    <p>関連度の高いpage5から正確な売上前年比データを抽出し、Gemini2.5モデルが正しく回答できました。</p>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="text-xl font-semibold mb-3"><i class="fas fa-image text-green-400 mr-2"></i>抽出された画像</h2>
+                <div class="image-display h-full">
+                    <div class="text-center">
+                        <div class="mb-2 text-lg font-medium">page5 のプレビュー</div>
+                        <div class="p-2 bg-gray-800 rounded-lg inline-block">
+                            <div class="bg-gray-700 rounded p-4 inline-block">
+                                <i class="fas fa-table text-5xl text-blue-300"></i>
+                                <div class="mt-2 text-sm">表：外食産業売上高前年比</div>
+                                <div class="mt-1 text-xs text-green-300">2024年：103.7%</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-sm">
+                            <p>※図中のデータから正確な回答を生成</p>
+                            <p class="mt-2 text-blue-300">「2024年の外食産業の売上高前年比は103.7%で増加傾向にあります」</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-6 right-8 text-sm text-gray-300 flex items-center">
+            <i class="fas fa-calendar-alt mr-2"></i> 2025年6月14日
+        </div>
+    </div>
+</body>
+</html>

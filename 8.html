@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cohere Embed 4によるマルチモーダルRAG</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0A2463 0%, #1E5F74 100%);
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+        }
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .feature-icon {
+            width: 24px;
+            text-align: center;
+            margin-right: 16px;
+            color: #64E9EE;
+        }
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background-color: #64E9EE;
+            margin: 15px 0 20px;
+        }
+        .flow-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+        .flow-item {
+            flex: 1;
+            position: relative;
+            padding: 16px;
+            text-align: center;
+            background-color: rgba(100, 233, 238, 0.1);
+            border-radius: 8px;
+            margin: 0 8px;
+        }
+        .flow-item:after {
+            content: "→";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64E9EE;
+            font-size: 24px;
+        }
+        .flow-item:last-child:after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h1 class="text-4xl font-bold tracking-wide mb-2">Cohere Embed 4によるマルチモーダルRAG</h1>
+        <div class="title-line"></div>
+        
+        <div class="content-section">
+            <h2 class="text-2xl font-semibold mb-2">概要</h2>
+            <p>Cohere Embed 4は2025年4月にリリースされた最新の埋め込みモデルで、テキストだけでなく画像も含めたマルチモーダル情報を統合的に扱うことができます。</p>
+            
+            <div class="flow-section">
+                <div class="flow-item">
+                    <i class="fas fa-images text-2xl mb-3 text-blue-300"></i>
+                    <div class="text-lg font-medium">画像埋め込み生成</div>
+                    <div class="text-sm">PDFやスライドの画像をベクトル化</div>
+                </div>
+                <div class="flow-item">
+                    <i class="fas fa-search text-2xl mb-3 text-green-300"></i>
+                    <div class="text-lg font-medium">クエリ埋め込み</div>
+                    <div class="text-sm">ユーザーの質問をベクトル化</div>
+                </div>
+                <div class="flow-item">
+                    <i class="fas fa-robot text-2xl mb-3 text-yellow-300"></i>
+                    <div class="text-lg font-medium">回答生成</div>
+                    <div class="text-sm">マルチモーダルLLMで処理</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="text-2xl font-semibold mb-3">主な特徴</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">異種メディア統合</div>
+                        <div class="text-sm text-gray-300">テキスト・画像・PDF・スライドを同一ベクトル空間で表現</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-language"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">クロス言語高精度</div>
+                        <div class="text-sm text-gray-300">100以上の言語に対応し、言語間でも高精度な検索</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-cube"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">マトリョーシカ次元構造</div>
+                        <div class="text-sm text-gray-300">256～1536次元まで柔軟に選択可能</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">最適化対応</div>
+                        <div class="text-sm text-gray-300">INT8量子化やバイナリ出力形式に対応</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">大規模文書対応</div>
+                        <div class="text-sm text-gray-300">最大128kトークン（約200ページ）を一括処理可能</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-cloud"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">クラウド連携</div>
+                        <div class="text-sm text-gray-300">Microsoft Azure、Amazon SageMakerなど対応</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-6 right-8 text-sm text-gray-300 flex items-center">
+            <i class="fas fa-calendar-alt mr-2"></i> 2025年6月14日
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA2：ざっくり資料を聞いてみる</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0A2463 0%, #247BA0 100%);
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+        }
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background-color: #FF9F1C;
+            margin: 15px 0 20px;
+        }
+        .query-section {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #FF9F1C;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .image-display {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .result-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .result-icon {
+            width: 24px;
+            text-align: center;
+            margin-right: 16px;
+            color: #64E9EE;
+        }
+        .conclusion {
+            border-left: 4px solid #64E9EE;
+            padding: 15px;
+            background-color: rgba(100, 233, 238, 0.1);
+            border-radius: 8px;
+        }
+        .sample-page {
+            display: flex;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h1 class="text-4xl font-bold tracking-wide mb-2">QA2：ざっくり資料を聞いてみる</h1>
+        <div class="title-line"></div>
+        
+        <div class="content-section">
+            <h2 class="text-xl font-semibold mb-3"><i class="fas fa-search text-yellow-400 mr-2"></i>クエリ</h2>
+            <div class="query-section">
+                <p class="text-lg">"この資料の全体像と主な内容を教えてください"</p>
+            </div>
+        </div>
+        
+        <div class="result-grid">
+            <div class="content-section">
+                <h2 class="text-xl font-semibold mb-3"><i class="fas fa-list text-blue-400 mr-2"></i>検索結果</h2>
+                
+                <div class="result-item bg-blue-900 bg-opacity-30">
+                    <div class="result-icon text-yellow-300"><i class="fas fa-file-pdf"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">page6 <span class="text-sm text-yellow-200">スコア: 0.91</span></div>
+                        <div class="text-sm text-gray-300">資料概要ページ</div>
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">page11 <span class="text-sm text-gray-300">スコア: 0.86</span></div>
+                        <div class="text-sm text-gray-300">産業調査まとめ</div>
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div>
+                        <div class="text-lg font-medium">page10 <span class="text-sm text-gray-300">スコア: 0.84</span></div>
+                        <div class="text-sm text-gray-300">統計データ分析結果</div>
+                    </div>
+                </div>
+                
+                <div class="conclusion mt-4">
+                    <p class="font-medium"><i class="fas fa-check-circle text-green-400 mr-2"></i>結論</p>
+                    <p>求めるスライド（資料の全体像）が上位にヒットし、Gemini2.5は適切に内容を要約できました。</p>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="text-xl font-semibold mb-3"><i class="fas fa-image text-green-400 mr-2"></i>抽出された画像</h2>
+                <div class="image-display">
+                    <div class="sample-page">
+                        <div class="p-2 bg-gray-800 rounded-lg mr-2 flex-shrink-0">
+                            <div class="bg-gray-700 rounded p-2 text-center">
+                                <i class="fas fa-file-alt text-3xl text-blue-300"></i>
+                                <div class="mt-1 text-xs">page6</div>
+                            </div>
+                        </div>
+                        <div class="text-sm">
+                            <p class="font-medium text-blue-300">資料概要ページ</p>
+                            <p class="text-xs">外食産業市場動向調査の目的と調査方法、主要統計について</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sample-page">
+                        <div class="p-2 bg-gray-800 rounded-lg mr-2 flex-shrink-0">
+                            <div class="bg-gray-700 rounded p-2 text-center">
+                                <i class="fas fa-chart-pie text-3xl text-purple-300"></i>
+                                <div class="mt-1 text-xs">page11</div>
+                            </div>
+                        </div>
+                        <div class="text-sm">
+                            <p class="font-medium text-purple-300">産業調査まとめ</p>
+                            <p class="text-xs">令和6年の業種別動向と今後の展望</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-sm bg-gray-800 bg-opacity-50 rounded p-3">
+                        <p class="font-medium text-green-300">Gemini2.5の回答</p>
+                        <p class="text-xs mt-1">「この資料は外食産業市場動向調査の2024年結果報告です。経済産業省による調査で、業種別・月別の売上動向、客数の変化、消費者トレンドについて分析されています。2024年は全体で前年比103.7%と回復傾向を示しています。」</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-6 right-8 text-sm text-gray-300 flex items-center">
+            <i class="fas fa-calendar-alt mr-2"></i> 2025年6月14日
+        </div>
+    </div>
+</body>
+</html>
